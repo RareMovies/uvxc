@@ -45,5 +45,5 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 ##### Changer fond d'écran
-RUN rm /headless/.config/bg_sakuli.png
+
 ADD wallpaper.png /headless/.config/bg_sakuli.png
