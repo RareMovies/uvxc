@@ -45,7 +45,7 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 ##### Changer fond d'écran
-RUN rm /headless/.config/bg_sakuli.png
+RUN rm /headless/.config/calipsoplus.png
 ADD wallpaper.png /headless/.config/wallpaper.png
 ADD xfce4-desktop.xml /headless/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
