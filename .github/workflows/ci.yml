@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   docker:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
