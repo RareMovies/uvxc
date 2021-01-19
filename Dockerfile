@@ -1,10 +1,10 @@
-FROM aicampbell/vnc-ubuntu18-xfce
+FROM accetto/ubuntu-vnc-xfce-chromium-g3
 
 USER root
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y apt-utils apt-transport-https software-properties-common curl iputils-ping vim leafpad libnss3-tools && \
+    apt-get install -y apt-utils apt-transport-https software-properties-common curl iputils-ping vim libnss3-tools && \
     apt-get update
 
 ##### Extension JsonViewer pour chromium
@@ -45,7 +45,6 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 ##### Changer fond d'écran
-RUN rm /headless/.config/calipsoplus.png
 ADD wallpaper.png /headless/.config/wallpaper.png
 ADD xfce4-desktop.xml /headless/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
