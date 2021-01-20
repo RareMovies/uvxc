@@ -51,3 +51,5 @@ ADD xfce4-desktop.xml /headless/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-d
 ADD bashrc.sh /headless/bashrc.sh
 RUN cat /headless/bashrc.sh >> /headless/.bashrc && \
     rm /headless/bashrc.sh
+
+USER headless
