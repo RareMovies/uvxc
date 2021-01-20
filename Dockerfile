@@ -44,12 +44,16 @@ RUN apt-get clean && \
     apt -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-##### Changer fond d'écran
-ADD wallpaper.png /headless/.config/wallpaper.png
-ADD xfce4-desktop.xml /headless/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
-ADD bashrc.sh /headless/bashrc.sh
-RUN cat /headless/bashrc.sh >> /headless/.bashrc && \
-    rm /headless/bashrc.sh
+
+
+## Allow sudo without password
+RUN echo "headless     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+## Remove desktop shortcut 
+RUN rm /home/headless/Desktop/versionsticker.desktop
+
+## Full size by default
+RUN sed -i "s/UI.initSetting('resize', 'off');/UI.initSetting('resize', 'remote');/g" /usr/libexec/noVNCdim/app/ui.js
 
 USER headless
