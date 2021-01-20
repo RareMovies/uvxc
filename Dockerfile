@@ -57,3 +57,6 @@ RUN rm /home/headless/Desktop/versionsticker.desktop
 RUN sed -i "s/UI.initSetting('resize', 'off');/UI.initSetting('resize', 'remote');/g" /usr/libexec/noVNCdim/app/ui.js
 
 USER headless
+
+RUN mkdir /home/headless/work
+WORKDIR /home/headless/work
