@@ -4,7 +4,7 @@ USER root
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y apt-utils apt-transport-https software-properties-common curl iputils-ping vim libnss3-tools && \
+    apt-get install -y apt-utils apt-transport-https software-properties-common curl iputils-ping vim libnss3-tools ssh && \
     apt-get update
 
 ##### Extension JsonViewer pour chromium
