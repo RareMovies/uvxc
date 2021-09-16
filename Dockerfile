@@ -21,9 +21,9 @@ RUN wget https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc
 
 RUN apt-get install -y unzip
 RUN cd /usr/bin && \
-    wget https://releases.hashicorp.com/vault/1.3.4/vault_1.3.4_linux_amd64.zip && \
-    unzip vault_1.3.4_linux_amd64.zip && \
-    rm vault_1.3.4_linux_amd64.zip
+    wget https://releases.hashicorp.com/vault/1.8.2/vault_1.8.2_linux_amd64.zip && \
+    unzip vault_1.8.2_linux_amd64.zip && \
+    rm vault_1.8.2_linux_amd64.zip
 RUN vault -autocomplete-install
 
 # Installing kubectl
