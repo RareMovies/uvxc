@@ -44,7 +44,10 @@ RUN apt-get clean && \
     apt -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-
+# Installing DBeaver
+RUN add-apt-repository ppa:serge-rider/dbeaver-ce && \
+    apt-get update  && \
+    apt-get install dbeaver-ce
 
 
 ## Allow sudo without password
