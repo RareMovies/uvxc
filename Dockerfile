@@ -4,7 +4,7 @@ USER root
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y apt-utils apt-transport-https software-properties-common curl iputils-ping vim libnss3-tools ssh git && \
+    apt-get install -y apt-utils apt-transport-https software-properties-common gnupg curl iputils-ping vim libnss3-tools ssh git && \
     apt-get update
 
 ##### Extension JsonViewer pour chromium
@@ -45,12 +45,11 @@ RUN add-apt-repository ppa:serge-rider/dbeaver-ce && \
     apt-get install dbeaver-ce
 
 # Installing QGIS
-RUN apt-get install gnupg software-properties-common && \
-    wget -qO - https://qgis.org/downloads/qgis-2021.gpg.key | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/qgis-archive.gpg --import && \
+RUN wget -qO - https://qgis.org/downloads/qgis-2021.gpg.key | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/qgis-archive.gpg --import && \
     chmod a+r /etc/apt/trusted.gpg.d/qgis-archive.gpg && \
     add-apt-repository "deb https://qgis.org/ubuntu $(lsb_release -c -s) main" && \
     apt-get update && \
-    apt-get install qgis qgis-plugin-grass
+    apt-get install -y qgis qgis-plugin-grass
     
 # Clean
 RUN apt-get clean && \
