@@ -38,17 +38,24 @@ RUN apt-get install bash-completion
 RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && \
     chmod 700 get_helm.sh && \
     ./get_helm.sh
-    
-##### Clean
-RUN apt-get clean && \
-    apt -y autoremove && \
-    rm -rf /var/lib/apt/lists/*
 
 # Installing DBeaver
 RUN add-apt-repository ppa:serge-rider/dbeaver-ce && \
     apt-get update  && \
     apt-get install dbeaver-ce
 
+# Installing QGIS
+RUN apt-get install gnupg software-properties-common && \
+    wget -qO - https://qgis.org/downloads/qgis-2021.gpg.key | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/qgis-archive.gpg --import && \
+    chmod a+r /etc/apt/trusted.gpg.d/qgis-archive.gpg && \
+    add-apt-repository "deb https://qgis.org/ubuntu $(lsb_release -c -s) main" && \
+    apt-get update && \
+    apt-get install qgis qgis-plugin-grass
+    
+# Clean
+RUN apt-get clean && \
+    apt -y autoremove && \
+    rm -rf /var/lib/apt/lists/*    
 
 ## Allow sudo without password
 RUN echo "headless     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
