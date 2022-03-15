@@ -136,7 +136,7 @@ main() {
         echo ${DOCKER_EXTRA_OPTS}
     fi
 
-    dockerd $DOCKER_EXTRA_OPTS &
+    sudo dockerd $DOCKER_EXTRA_OPTS &
 
     ### default backround execution mode
     ### be sure to end all previous branches by calling 'cleanup'
