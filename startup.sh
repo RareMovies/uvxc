@@ -9,17 +9,6 @@ source "${_mydir}"/parser.rc
 source "${_mydir}"/user_generator.rc
 source "${_mydir}"/vnc_startup.rc
 
-# Check for DOCKER_EXTRA_OPTS. If not present set to empty value
-if [ -z ${DOCKER_EXTRA_OPTS+x} ]; then
-    echo "==> Not using DOCKER_EXTRA_OPTS"
-    DOCKER_EXTRA_OPTS=
-else
-    echo "==> Using DOCKER_EXTRA_OPTS"
-    echo ${DOCKER_EXTRA_OPTS}
-fi
-
-dockerd $DOCKER_EXTRA_OPTS &
-
 cleanup () {
     local readonly last_pid=$!
 
@@ -137,6 +126,17 @@ main() {
             cleanup
         fi
     fi
+
+    # Check for DOCKER_EXTRA_OPTS. If not present set to empty value
+    if [ -z ${DOCKER_EXTRA_OPTS+x} ]; then
+        echo "==> Not using DOCKER_EXTRA_OPTS"
+        DOCKER_EXTRA_OPTS=
+    else
+        echo "==> Using DOCKER_EXTRA_OPTS"
+        echo ${DOCKER_EXTRA_OPTS}
+    fi
+
+    dockerd $DOCKER_EXTRA_OPTS &
 
     ### default backround execution mode
     ### be sure to end all previous branches by calling 'cleanup'
