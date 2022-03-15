@@ -9,6 +9,6 @@ RUN apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io
 RUN mkdir -p /etc/docker && echo "{ \"storage-driver\": \"vfs\"}" > /etc/docker/daemon.json
 RUN usermod -aG docker headless
 ADD startup.sh /dockerstartup/startup.sh
+RUN chmod +x /dockerstartup/startup.sh
 USER headless
 VOLUME ["/var/lib/docker"]
-ENTRYPOINT [ "dockerd&", "/usr/bin/tini", "--", "/dockerstartup/startup.sh" ]
