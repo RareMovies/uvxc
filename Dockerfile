@@ -65,6 +65,9 @@ RUN rm /home/headless/Desktop/versionsticker.desktop
 ## Full size by default
 RUN sed -i "s/UI.initSetting('resize', 'off');/UI.initSetting('resize', 'remote');/g" /usr/libexec/noVNCdim/app/ui.js
 
+# Keep the connection alive to prevent timeouts
+ENV NOVNC_HEARTBEAT=30
+
 USER headless
 
 RUN mkdir /home/headless/work
