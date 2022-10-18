@@ -7,6 +7,9 @@ RUN apt-get update -y && \
     apt-get install -y apt-utils apt-transport-https software-properties-common gnupg curl iputils-ping vim libnss3-tools ssh git && \
     apt-get update
 
+# Get Onyxia init script
+RUN wget https://raw.githubusercontent.com/InseeFrLab/images-datascience/main/base/common-scripts/onyxia-init.sh -O /opt/onyxia-init.sh
+
 ##### Extension JsonViewer pour chromium
 RUN touch /etc/chromium-browser/policies/managed/test_policy.json && \
     echo "{\"ExtensionInstallForcelist\": [\"aimiinbnnkboelefkjlenlgimcabobli;https://clients2.google.com/service/update2/crx\"]}" > /etc/chromium-browser/policies/managed/test_policy.json
