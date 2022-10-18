@@ -4,7 +4,7 @@ USER root
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y apt-utils apt-transport-https software-properties-common gnupg curl iputils-ping vim libnss3-tools ssh git && \
+    apt-get install -y apt-utils apt-transport-https software-properties-common gnupg curl iputils-ping vim libnss3-tools ssh git unzip && \
     apt-get update
 
 # Get Onyxia init script
@@ -22,7 +22,6 @@ RUN wget https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc
 
 # Installing vault
 
-RUN apt-get install -y unzip
 RUN cd /usr/bin && \
     wget https://releases.hashicorp.com/vault/1.8.2/vault_1.8.2_linux_amd64.zip && \
     unzip vault_1.8.2_linux_amd64.zip && \
@@ -48,7 +47,8 @@ RUN add-apt-repository ppa:serge-rider/dbeaver-ce && \
     apt-get install dbeaver-ce
 
 # Installing QGIS
-RUN wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org/downloads/qgis-archive-keyring.gpg && \
+RUN mkdir -m755 -p /etc/apt/keyrings && \
+    wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org/downloads/qgis-archive-keyring.gpg && \
     apt-get update && \
     apt-get install -y qgis qgis-plugin-grass
     
