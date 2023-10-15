@@ -69,7 +69,7 @@ RUN sed -i "s/UI.initSetting('resize', 'off');/UI.initSetting('resize', 'remote'
 
 # Keep the connection alive to prevent timeouts
 ENV NOVNC_HEARTBEAT=30
-    TZ="Asia/Kolkata" \
+    TZ="Asia"
 
 USER headless
 
