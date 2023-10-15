@@ -8,7 +8,7 @@ RUN apt-get update -y && \
     apt-get update
 
 # Get Onyxia init script
-RUN wget https://raw.githubusercontent.com/InseeFrLab/images-datascience/main/base/common-scripts/onyxia-init.sh -O /opt/onyxia-init.sh && \
+RUN wget https://raw.githubusercontent.com/InseeFrLab/images-datascience/main/scripts/onyxia-init.sh -O /opt/onyxia-init.sh && \
     chmod +x /opt/onyxia-init.sh
 
 ##### Extension JsonViewer pour chromium
