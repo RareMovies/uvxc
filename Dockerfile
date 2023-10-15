@@ -7,6 +7,11 @@ RUN apt-get update -y && \
     apt-get install -y apt-utils apt-transport-https software-properties-common gnupg curl iputils-ping vim libnss3-tools ssh git unzip && \
     apt-get update
 
+
+# Set the timezone non-interactively
+ENV TZ=Your_Timezone_Here
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Get Onyxia init script
 RUN wget https://raw.githubusercontent.com/InseeFrLab/images-datascience/main/scripts/onyxia-init.sh -O /opt/onyxia-init.sh && \
     chmod +x /opt/onyxia-init.sh
