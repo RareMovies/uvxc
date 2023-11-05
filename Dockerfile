@@ -9,7 +9,7 @@ RUN apt-get update -y && \
 
 
 # Set the timezone non-interactively
-ENV TZ=Your_Timezone_Here
+ENV TZ=Asia/Kolkata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Get Onyxia init script
